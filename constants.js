@@ -1,5 +1,5 @@
 // API
-export const API = "https://pcmob6-blog-api.<username>.repl.co";
+export const API = "https://pcmob6-blog-api.kimmooi.repl.co";
 export const API_LOGIN = "/auth";
 export const API_SIGNUP = "/newuser";
 export const API_POSTS = "/posts";
