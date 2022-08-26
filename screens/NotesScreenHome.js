@@ -6,16 +6,12 @@ import {
   View,
 } from "react-native";
 import React from "react";
-
-const posts = [
-  {
-    id: 1,
-    title: "Add NotesScreenHome.js file",
-    content: "Make sure you don't have any errors when copying this code",
-  },
-];
-
+import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+import { NOTES_SCREEN } from "../constants";
 export default function NotesScreenHome() {
+  const navigation = useNavigation();
+  const posts = useSelector((state) => state.notes);
   function renderItem({ item }) {
     return (
       <TouchableOpacity style={styles.noteCard} onPress={() => {}}>
@@ -37,7 +33,12 @@ export default function NotesScreenHome() {
       />
 
       <View style={{ flex: 1 }} />
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate(NOTES_SCREEN.Add);
+        }}
+      >
         <Text style={styles.buttonText}>Add Note</Text>
       </TouchableOpacity>
     </View>
@@ -47,7 +48,7 @@ export default function NotesScreenHome() {
 const styles = StyleSheet.create({
   noteCard: {
     borderColor: "gray",
-    borderWidth: "1px",
+    borderWidth: 1,
     padding: 15,
     borderRadius: 5,
     marginBottom: 15,

@@ -1,20 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import notesReducer from "./features/notesSlice";
 
-const initialState = [
-  { id: "1", title: "First Post!", content: "Hello!" },
-  { id: "2", title: "Second Post", content: "More text" },
-];
-
-const notesSlice = createSlice({
-  name: "notes",
-  initialState,
-  reducers: {
-    noteAdded(state, action) {
-      state.push(action.payload);
-    },
+export default configureStore({
+  reducer: {
+    notes: notesReducer,
   },
 });
-
-export const { noteAdded } = notesSlice.actions;
-
-export default notesSlice.reducer;
